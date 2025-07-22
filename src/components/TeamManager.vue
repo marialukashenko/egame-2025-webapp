@@ -48,6 +48,7 @@ export default defineComponent({
 .team-management {
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
 button {
   padding: 10px;

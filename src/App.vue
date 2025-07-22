@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import TeamManager from './components/TeamManager.vue'
 import ShowResources from './components/ShowResources.vue'
+import NodeActions from './components/NodeActions.vue'
 </script>
 
 <template>
   <TeamManager/>
   <ShowResources/>
+  <NodeActions/>
 </template>
 
 <style scoped>
