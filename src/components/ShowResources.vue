@@ -14,44 +14,68 @@ const resourceNames: Record<keyof Resources, string> = {
   copper: 'Медь',
   iron: 'Железо',
 };
+
+const open = ref(false);
+function toggle() {
+  open.value = !open.value;
+}
 </script>
 
 <template>
-  <div class="resource-list">
-    <h2>Ресурсы</h2>
-    <ul>
-      <li v-for="(value, key) in resources" :key="key">
-        <span class="resource-name">{{ resourceNames[key as keyof Resources] }}:</span>
-        <span class="resource-value">{{ value }}</span>
-      </li>
-    </ul>
+  <div class="dropdown-block">
+    <div class="dropdown-header" @click="toggle">
+      <span>Ресурсы</span>
+      <span class="arrow">{{ open ? '▲' : '▼' }}</span>
+    </div>
+    <div v-if="open" class="dropdown-content">
+      <ul>
+        <li v-for="(value, key) in resources" :key="key">
+          <span class="resource-name">{{ resourceNames[key as keyof Resources] }}:</span>
+          <span class="resource-value">{{ value }}</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.resource-list {
+.dropdown-block {
   max-width: 400px;
   margin: 2rem auto;
-  padding: 1rem;
   background: #222831;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.resource-list h2 {
-  margin-bottom: 1rem;
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
   color: #ffd369;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #393e46;
+  user-select: none;
 }
-.resource-list ul {
+.dropdown-content {
+  padding: 1rem;
+}
+.arrow {
+  font-size: 1.1rem;
+}
+ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
-.resource-list li {
+li {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
   border-bottom: 1px solid #393e46;
 }
-.resource-list li:last-child {
+li:last-child {
   border-bottom: none;
 }
 .resource-name {
