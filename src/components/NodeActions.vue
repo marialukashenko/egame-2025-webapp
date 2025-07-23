@@ -1,20 +1,5 @@
 <template>
   <div class="node-actions-list">
-    <!-- Team Members Dropdown Block -->
-    <div v-if="userTeam" class="dropdown-block">
-      <div class="dropdown-header" @click="toggleTeam">
-        <span>Состав команды</span>
-        <span class="arrow">{{ teamOpen ? '▲' : '▼' }}</span>
-      </div>
-      <div v-if="teamOpen" class="dropdown-content">
-        <ul class="team-members-list">
-          <li v-for="user in userTeam.users" :key="user.id">
-            {{ user.name }}
-          </li>
-        </ul>
-      </div>
-    </div>
-
     <!-- Actions Dropdown Block -->
     <div class="dropdown-block">
       <div class="dropdown-header" @click="toggleActions">
@@ -117,31 +102,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-// Mocked user and team for demonstration
-const user = ref({ id: '1', name: 'Пользователь 1' });
-const userTeam = ref({
-  id: 'team1',
-  inviteCode: 'ABC123',
-  users: [
-    { id: '1', name: 'Пользователь 1' },
-    { id: '2', name: 'Пользователь 2' },
-    { id: '3', name: 'Пользователь 3' },
-  ],
-});
-const selectedTeamUser = ref(user.value.id);
-
-const resourcesOpen = ref(false);
 const actionsOpen = ref(true);
-const teamOpen = ref(false);
-
-function toggleResources() {
-  resourcesOpen.value = !resourcesOpen.value;
-}
 function toggleActions() {
   actionsOpen.value = !actionsOpen.value;
-}
-function toggleTeam() {
-  teamOpen.value = !teamOpen.value;
 }
 
 const inputValue = ref('');
@@ -351,24 +314,6 @@ label {
   background: #00adb5;
   color: #fff;
 }
-.team-dropdown {
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.team-dropdown label {
-  color: #ffd369;
-  font-weight: 500;
-}
-.team-dropdown select {
-  background: #393e46;
-  color: #ffd369;
-  border-radius: 6px;
-  border: 1px solid #393e46;
-  padding: 0.3rem 0.7rem;
-  font-size: 1rem;
-}
 .dropdown-block {
   margin-bottom: 1.5rem;
   background: #23272e;
@@ -392,19 +337,5 @@ label {
 }
 .arrow {
   font-size: 1.1rem;
-}
-.team-members-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.team-members-list li {
-  color: #00adb5;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid #393e46;
-  font-size: 1rem;
-}
-.team-members-list li:last-child {
-  border-bottom: none;
 }
 </style> 

@@ -39,8 +39,8 @@ export default defineComponent({
 
 <template>
   <div class="team-management">
-    <button @click="createTeam">СОЗДАТЬ КОМАНДУ</button>
-    <button @click="joinTeam">ПРИСОЕДИНИТЬСЯ</button>
+    <button @click="createTeam" class="action-btn">СОЗДАТЬ КОМАНДУ</button>
+    <button @click="joinTeam" class="action-btn">ПРИСОЕДИНИТЬСЯ</button>
   </div>
 </template>
 
@@ -49,11 +49,20 @@ export default defineComponent({
   display: flex;
   gap: 10px;
   justify-content: center;
+  margin: 2rem auto;
 }
-button {
-  padding: 10px;
-  border: 2px solid black;
-  background: none;
+.action-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #00adb5;
+  color: #fff;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.action-btn:hover {
+  background: #00939a;
 }
 </style>
