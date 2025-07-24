@@ -3,11 +3,13 @@ import TeamManager from './components/TeamManager.vue'
 import ShowResources from './components/ShowResources.vue'
 import NodeActions from './components/NodeActions.vue'
 import ShowMembers from './components/ShowMembers.vue'
+import TradeManager from './components/TradeManager.vue'
 </script>
 
 <template>
   <TeamManager/>
   <ShowResources/>
+  <TradeManager/>
   <ShowMembers/>
   <NodeActions/>
 </template>
